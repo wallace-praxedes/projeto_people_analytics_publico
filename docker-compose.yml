@@ -1,0 +1,16 @@
+services: # [Aqui eu estou definindo o que preciso para o projeto]
+  db: # [Aqui sobre o banco de dados a ser usado]
+    image: postgres:16-alpine # [Aqui o programa do banco de dados a ser usado; alpine é a versão mais enxuta]
+    container_name: projeto_people_analytics # [Aqui o nome do container]
+    environment: # [Aqui os acesso que estarão no .env]
+      POSTGRES_USER:
+      POSTGRES_PASSWORD:
+      POSTGRES_DB:
+    ports: # [Aqui são as portas que darão acesso ao banco de dados]
+      - "42:5432"
+    volumes: # [Aqui onde o projeto vai manter as informações, persistindo que não sejam perdidos]
+      - pgdata:/var/lib/postgresql/data
+      - ./arquivos_base:/dados:ro
+    
+volumes:
+  pgdata:
