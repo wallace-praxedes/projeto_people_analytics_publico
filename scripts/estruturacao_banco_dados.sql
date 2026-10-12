@@ -1,7 +1,11 @@
+drop view if exists vw_empregados;
+drop view if exists vw_empregados_base;
+drop table if exists raw_empregados;
+drop table if exists stg_empregados;
+
 -- =======================================================================
 -- BLOCO 1: Estruturação da tabela para as informações brutas
 -- =======================================================================
-drop table if exists raw_empregados;
 
 CREATE TABLE raw_empregados (
 matricula					text,
@@ -13,7 +17,7 @@ centro_resultado_nome		text,
 centro_resultado_codigo		text,
 data_admissao				date,
 data_desligamento			date,
-salario_bruto				numeric(10,2),
+salario_bruto				numeric(12,2),
 estado_civil				text,
 raca_cor					text,
 formacao_academica			text,
@@ -29,18 +33,17 @@ motivo_desligamento			text
 -- =======================================================================
 -- BLOCO 2: Criação da tabela de triagem
 -- =======================================================================
-drop table if exists stg_empregados;
 
 CREATE TABLE stg_empregados(
 matricula					text,
 nome						text,
 sexo						text,
 funcao_nome					text,
-data_nascimento				text,
 centro_resultado_codigo		text,
 centro_resultado_nome		text,
 data_admissao				text,
 data_desligamento			text,
+data_nascimento				text,
 salario						text,
 idade						text,
 estado_civil				text,
@@ -100,7 +103,79 @@ select
 from stg_empregados;
 
 -- =======================================================================
--- BLOCO 5: conferencia de dados na tabela raw_empregados
+-- BLOCO 5: criar tabela ajustada com cargos e idade
+-- =======================================================================
+
+create view vw_empregados_base as
+select
+	e.matricula,
+	e.nome,
+	e.sexo,
+	e.funcao_nome,
+	case
+		when e.funcao_nome ilike 'Advogad%' 	then 'ADVOGADO (A)'
+		when e.funcao_nome ilike 'Analista%'	then 'ANALISTA'
+		when e.funcao_nome ilike 'Assistente%'	then 'ASSISTENTE'
+		when e.funcao_nome ilike 'Atendente%'	then 'ATENDENTE'
+		when e.funcao_nome ilike 'Chefe%'		then 'CHEFE'
+		when e.funcao_nome ilike 'Chief%'		then 'CHIEF'
+		when e.funcao_nome ilike 'Cientista%'	then 'CIENTISTA'
+		when e.funcao_nome ilike 'Contador%'	then 'CONTADOR (A)'
+		when e.funcao_nome ilike 'Coordenador%'	then 'COORDENADOR (A)'
+		when e.funcao_nome ilike 'Design%'		then 'DESIGNER'
+		when e.funcao_nome ilike 'Diretor%'		then 'DIRETOR (A)'
+		when e.funcao_nome ilike 'Engenheir%'	then 'ENGENHEIRO (A)'
+		when e.funcao_nome ilike 'Estagi%'		then 'ESTAGIARIO (A)'
+		when e.funcao_nome ilike 'Executi%'		then 'EXECUTIVO (A)'
+		when e.funcao_nome ilike 'Gerent%'		then 'GERENTE'
+		when e.funcao_nome ilike 'HR B%'		then 'BUSINESS PARTNER'
+		when e.funcao_nome ilike 'Jovem%'		then 'JOVEM APRENDIZ'
+		when e.funcao_nome ilike 'Product%'		then 'PRODUCT EMPLOYEE'
+		when e.funcao_nome ilike 'SDR'			then 'SDR'
+		when e.funcao_nome ilike 'Supervisor%'	then 'SUPERVISOR (A)'
+		when e.funcao_nome ilike 'Tech%'		then 'TECH EMPLOYEE'
+		when e.funcao_nome ilike '%Researcher'	then 'RESEARCHER EMPLOYEE'
+	end as cargo_ajustado,
+	e.data_nascimento,
+	extract (year from age(current_date, e.data_nascimento))::int as idade,
+	e.centro_resultado_nome,
+	e.centro_resultado_codigo,
+	e.data_admissao,
+	e.data_desligamento,
+	case
+		when e.data_desligamento is null then 'Ativo'
+		else 'Desligado'
+	end as status_empregado,
+	e.salario_bruto,
+	e.estado_civil,
+	e.raca_cor,
+	e.formacao_academica,
+	e.municipio_nascimento,
+	e.vinculo_empregaticio,
+	e.deficiente,
+	e.carga_horaria_mensal,
+	e.empresa_nome,
+	e.empresa_codigo,
+	e.motivo_desligamento
+from raw_empregados e;
+
+-- =======================================================================
+-- BLOCO 6: criar tabela com coluna de gerencia
+-- =======================================================================
+
+create view vw_empregados as
+select
+	b.*,
+	case
+		when b.cargo_ajustado 	in ('CHIEF', 'COORDENADOR (A)', 'DIRETOR (A)', 'GERENTE', 'SUPERVISOR (A)') 	then 'GERENTE'
+		when b.cargo_ajustado 	in ('ESTAGIARIO (A)') 															then 'ESTAGIARIO (A)'
+		when b.cargo_ajustado	in ('JOVEM APRENDIZ')															then 'JOVEM APRENDIZ'
+		else 'NÃO GERENTE'
+	end as categoria_gerencia
+from vw_empregados_base b;
+	
+-- =======================================================================
+-- BLOCO 7: conferencia de dados na tabela raw_empregados
 -- =======================================================================
 	
 select * from raw_empregados limit 10;
@@ -114,3 +189,150 @@ select column_name, data_type
 from information_schema.columns 
 where table_name = 'raw_empregados'
 order by ordinal_position;
+
+-- =======================================================================
+-- BLOCO 8: conferencia de respostas
+-- =======================================================================
+
+-- Quantos empregados temos no último mês de competência?
+
+select
+	count (*) filter (where data_desligamento is null) as empregados_ativos
+from raw_empregados;
+
+-- Qual é a distribuição de empregados ativos por empresa?
+
+select
+	empresa_nome,
+	count (*) as empregados_ativos
+from raw_empregados
+where data_desligamento is null
+group by
+	empresa_nome
+order by empregados_ativos desc;
+
+-- Qual é a evolução mensal de empregados até o último mês de competência?
+
+-- ainda não tem como responder
+
+-- Qual é a distribuição de empregados ativos por centro de resultado?
+
+select
+	centro_resultado_codigo, centro_resultado_nome,
+	count (*) as quantidade_empregados
+from raw_empregados
+where data_desligamento is null
+group by centro_resultado_codigo, centro_resultado_nome
+order by centro_resultado_nome desc;
+
+-- Qual é a distribuição de empregados por diretoria?
+
+select
+	centro_resultado_nome,
+	count (*) as quantidade_empregados
+from raw_empregados
+where data_desligamento is null
+group by centro_resultado_nome
+order by centro_resultado_nome desc;
+
+-- Qual é a distruição de sexo na empresa?
+
+select
+	sexo,
+	count (*) as quantidade_empregados
+from raw_empregados
+where data_desligamento is null
+group by sexo;
+
+-- Qual é a média de idade da empresa?
+
+select
+	round(avg(idade)) as media_idade
+from vw_empregados_base
+where status_empregado = 'Ativo';
+
+-- Qual é a origem da cidade de cada empregado?
+
+select
+	municipio_nascimento,
+	count (*) as qtd_empregados
+from vw_empregados_base
+group by municipio_nascimento
+order by municipio_nascimento asc;
+
+-- Qual é a distribuição de cor de pele da empresa?
+
+select
+	raca_cor,
+	count (*) as qtd_empregados
+from vw_empregados_base
+where status_empregado = 'Ativo'
+group by raca_cor;
+
+-- Qual é a distribuição acadêmica dos empregados?
+
+select
+	formacao_academica,
+	count (*) as qtd_empregados
+from vw_empregados_base
+where status_empregado = 'Ativo'
+group by formacao_academica;
+
+-- Qual é a distribuição de empregado por vínculo empregatício?
+
+select
+	vinculo_empregaticio,
+	count (*) as qtd_empregados
+from vw_empregados_base
+where status_empregado = 'Ativo'
+group by vinculo_empregaticio;
+
+-- Quantos empregados portadores de deficiência a empresa tem?
+
+select
+	case
+		when deficiente = 'True' then 'PCD'
+		else 'Não PCD'
+	end as deficiencia,
+	count (*) as qtd_empregados
+from vw_empregados_base
+where status_empregado = 'Ativo'
+group by 1;
+
+--  Qual é a distribuição por faixa etária (pirâmide etária)?
+
+select
+	case
+		when extract(year from data_nascimento) <= 1960 then 'Baby Boomers (até 1960)'
+		when extract(year from data_nascimento) between 1961 and 1980 then'Geração X (1961 até 1980)'
+		when extract(year from data_nascimento) between 1981 and 1996 then 'Geração Y (1981 até 1996)'
+		when extract(year from data_nascimento)	between 1997 and 2009 then 'Geração Z (1997 até 2009)'
+		else 'Geração Alpha (2010 adiante)'
+	end as geracao,
+	count (*) as qtd_empregados
+from vw_empregados_base
+group by geracao
+order by min(data_nascimento);
+
+-- Qual é a distribuição por estado civil?
+
+select
+	vinculo_empregaticio,
+	count (*) as qtd_empregados
+from vw_empregados_base
+group by vinculo_empregaticio;
+
+-- Qual é a distribuição por sexo em cada nível hierárquico?
+
+select
+	sexo,
+	count(*) filter (where categoria_gerencia = 'GERENTE')        as gerente,
+	count(*) filter (where categoria_gerencia = 'NÃO GERENTE')    as nao_gerente,
+	count(*) filter (where categoria_gerencia = 'ESTAGIARIO (A)') as estagiario,
+	count(*) filter (where categoria_gerencia = 'JOVEM APRENDIZ') as jovem_aprendiz,
+	count(*)                                                      as total
+from vw_empregados
+where status_empregado = 'Ativo'
+group by sexo
+order by sexo;
+	

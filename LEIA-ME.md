@@ -40,4 +40,3 @@ Esse seção compreende as perguntas a serem respondidas:
 - Qual é o grau de instrução por nível hieráquico?
 - Quantos empregados com deficiência existem por área?
 - Qual é a proporção entre liderança e demais cargos em cada área?
-
