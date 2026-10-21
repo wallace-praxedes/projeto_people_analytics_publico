@@ -18,7 +18,7 @@ Esse projeto tem a seguinte estrutura:
 
 ### 3.1 PESSOAS
 
-Esse seção compreende as perguntas a serem respondidas:
+**3.1.1 Essa seção compreende as perguntas a serem respondidas:**
 
 - Quantos empregados temos no último mês de competência?
 - Qual é a evolução mensal de empregados até o último mês de competência?
@@ -40,3 +40,21 @@ Esse seção compreende as perguntas a serem respondidas:
 - Qual é o grau de instrução por nível hieráquico?
 - Quantos empregados com deficiência existem por área?
 - Qual é a proporção entre liderança e demais cargos em cada área?
+
+**3.1.2 Essa seção compreende os indicadores desta seção:**
+
+*Nome Indicador - Tipo de Gráfico - Filtros do Gráfico - Legendas das Variáveis*
+
+- Quantidade de Empregados Ativos - Cartão - Empresa, Centro de Resultado, Categoria Gerencia [OK]
+- Evolução de Empregados Ativos - Gráfico de Linha - Empresa, Centro de Resultado, Categoria Gerencia - Categoria Gerencia [OK]
+- Distribuição de Empregados Ativos - Gráfico de Rosca - Empresa, Centro de Resultado, Categoria Gerencia - Sexo [OK] 
+- Distribuição de Idade e Sexo Ativos - Pirâmide Etária - Empresa, Centro de Resultado, Categoria Gerencia - Gerações [OK]
+- Distribuição Geográfica de Empregados Ativos - Mapa + Círculos de Densidade - Empresa, Centro de Resultado, Categoria Gerencia [OK]
+- Média de Idade Ativos - Cartão - Empresa, Centro de Resultado, Categoria Gerencia [OK]
+- Distribuição de Empregados Ativos - Gráfico de Rosca - Empresa, Centro de Resultado, Categoria Gerencia - Cor de Pele [OK] 
+- Porcentagem de PCDs Ativos - Cartão - Empresa, Centro de Resultado, Categoria Gerencia
+- Distribuição de Sexo por Nível Hierárquico Ativos - Gráfico de Colunas - Empresa, Centro de Resultado, Categoria Gerencia [OK]
+- Porcentagem de Mulheres na Liderança Ativos - Cartão - Empresa, Centro de Resultado, Categoria Gerencia [OK]
+- Tempo Médio de Casa - Cartão - Empresa, Centro de Resultado, Categoria Gerencia
+- Formação Acadêmica por Nível Hierárquico Ativos - Matriz com Mapa de Calor - Empresa, Centro de Resultado, Categoria Gerencia [OK]
+- Distribuição entre Gerentes e Não Gerentes - Gráfico de Colunas - Empresa, Centro de Resultado, Categoria Gerencia

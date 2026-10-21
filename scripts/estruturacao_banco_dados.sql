@@ -160,8 +160,10 @@ select
 from raw_empregados e;
 
 -- =======================================================================
--- BLOCO 6: criar tabela com coluna de gerencia
+-- BLOCO 6: criar tabela com coluna de gerencia e tempo casa
 -- =======================================================================
+
+drop view if exists vw_empregados;
 
 create view vw_empregados as
 select
@@ -171,14 +173,17 @@ select
 		when b.cargo_ajustado 	in ('ESTAGIARIO (A)') 															then 'ESTAGIARIO (A)'
 		when b.cargo_ajustado	in ('JOVEM APRENDIZ')															then 'JOVEM APRENDIZ'
 		else 'NÃO GERENTE'
-	end as categoria_gerencia
+	end as categoria_gerencia,
+	extract(year from age(coalesce(b.data_desligamento, current_date), b.data_admissao))::int as tempo_casa_anos,
+	(extract(year from age(coalesce(b.data_desligamento, current_date), b.data_admissao)) * 12
+	+	extract(month from age(coalesce(b.data_desligamento, current_date), b.data_admissao)))::int as tempo_casa_meses
 from vw_empregados_base b;
 	
 -- =======================================================================
 -- BLOCO 7: conferencia de dados na tabela raw_empregados
 -- =======================================================================
 	
-select * from raw_empregados limit 10;
+select * from vw_empregados limit 10;
 
 select 	count (*) 													as total,
 		count (*) filter (where data_desligamento is not null) 		as desligados,
@@ -257,6 +262,7 @@ select
 	municipio_nascimento,
 	count (*) as qtd_empregados
 from vw_empregados_base
+where status_empregado = 'Ativo'
 group by municipio_nascimento
 order by municipio_nascimento asc;
 
@@ -311,16 +317,17 @@ select
 	end as geracao,
 	count (*) as qtd_empregados
 from vw_empregados_base
+where status_empregado = 'Ativo'
 group by geracao
 order by min(data_nascimento);
 
 -- Qual é a distribuição por estado civil?
 
 select
-	vinculo_empregaticio,
+	estado_civil,
 	count (*) as qtd_empregados
 from vw_empregados_base
-group by vinculo_empregaticio;
+group by estado_civil;
 
 -- Qual é a distribuição por sexo em cada nível hierárquico?
 
@@ -335,4 +342,63 @@ from vw_empregados
 where status_empregado = 'Ativo'
 group by sexo
 order by sexo;
+
+-- Qual é a quantidade mulheres na liderança?
+
+select
+	categoria_gerencia,
+	count (*)												as qtd_gerente,
+	count (*) filter (where sexo = 'Feminino')				as qtd_mulheres
+from vw_empregados
+where status_empregado = 'Ativo'
+	and categoria_gerencia = 'GERENTE'
+group by categoria_gerencia;
+
+-- Qual é o tempo médio de casa por área e por empresa?
+
+select
+	centro_resultado_nome, empresa_nome,
+	round(avg(tempo_casa_meses)/12.0, 2)				as tempo_media_casa_meses
+from vw_empregados
+where status_empregado = 'Ativo'
+group by centro_resultado_nome, empresa_nome
+order by empresa_nome;
+
+
+-- Qual é o grau de instrução por nível hieráquico?
+
+select
+	categoria_gerencia,
+	count (*) filter (where formacao_academica = 'Doutorado')							as doutorado,
+	count (*) filter (where formacao_academica = 'Ensino Médio Completo')				as ensino_medio_completo,
+	count (*) filter (where formacao_academica = 'Ensino Médio Incompleto')				as ensino_medio_incompleto,
+	count (*) filter (where formacao_academica = 'Mestrado')							as mestrado,
+	count (*) filter (where formacao_academica = 'Pós-Graduação')						as pos_graducao,
+	count (*) filter (where formacao_academica = 'Superior Completo')					as superior_completo,
+	count (*) filter (where formacao_academica = 'Superior Incompleto')					as superior_incompleto
+from vw_empregados
+where status_empregado = 'Ativo'
+group by categoria_gerencia;
+
+-- Quantos empregados com deficiência existem por área?
+
+select
+	centro_resultado_nome,
+	count (*) filter (where deficiente = 'True')
+from vw_empregados
+where status_empregado = 'Ativo'
+group by centro_resultado_nome;
+
+-- Qual é a proporção entre liderança e demais cargos em cada área?
+
+select
+	centro_resultado_nome,
+	count (*) filter (where categoria_gerencia = 'GERENTE') 			as qtd_gerentes,
+	count (*) filter (where categoria_gerencia = 'NÃO GERENTE')			as qtd_nao_gerentes,
+	round(100.0 * count(*) filter (where categoria_gerencia = 'GERENTE') / count(*), 1) as pct_gerencia
+from vw_empregados
+where status_empregado = 'Ativo'
+	and categoria_gerencia in ('GERENTE', 'NÃO GERENTE')
+group by centro_resultado_nome;
+
 	
