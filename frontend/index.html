@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de People Analytics</title>
   <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/filtros.css">
 </head>
 <body>
 
@@ -27,10 +28,30 @@
       <div class="filtros-faixa">
         <div id="filtros">
           <span class="filtros-rotulo">Filtros</span>
-          <span class="filtro-chip">Empresa</span>
-          <span class="filtro-chip">Centro de resultado</span>
-          <span class="filtro-chip">Gerência</span>
-          <span class="filtros-aviso">em breve</span>
+
+          <label class="filtro-chip">
+            <span class="filtro-nome">Empresa</span>
+            <select id="filtro-empresa" disabled>
+              <option value="todos">Todas</option>
+            </select>
+          </label>
+
+          <label class="filtro-chip">
+            <span class="filtro-nome">Centro de resultado</span>
+            <select id="filtro-centro" disabled>
+              <option value="todos">Todos</option>
+            </select>
+          </label>
+
+          <label class="filtro-chip">
+            <span class="filtro-nome">Gerência</span>
+            <select id="filtro-gerencia" disabled>
+              <option value="todos">Todas</option>
+            </select>
+          </label>
+
+          <button type="button" id="filtro-limpar" class="filtro-limpar" hidden>Limpar filtros</button>
+          <span id="filtros-status" class="filtros-aviso" role="status" aria-live="polite">carregando filtros...</span>
         </div>
       </div>
 
@@ -181,10 +202,14 @@
 
   <footer class="rodape">
     <p>Projeto de portfólio com dados fictícios.</p>
-    <p class="rodape-creditos">Contorno do mapa: click_that_hood (Code for America) · Coordenadas dos municípios: kelvins/Municipios-Brasileiros (licença MIT)</p>
+    <p class="rodape-creditos">Contorno do mapa: click_that_hood (Code for America) · Coordenadas dos municípios: kelvins/Municipios-Brasileiros (licença MIT) · Gráficos: Chart.js · Animações: GSAP</p>
   </footer>
 
   <script src="js/vendor/chart.umd.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
   <script src="js/principal.js"></script>
+  <script src="js/animacoes.js"></script>
+  <script src="js/filtros.js"></script>
 </body>
 </html>

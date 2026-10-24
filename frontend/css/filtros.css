@@ -1,0 +1,106 @@
+/* ===== FILTROS (Etapa 8) =====
+   Este arquivo vem DEPOIS do estilos.css e só acrescenta/ajusta o que
+   os filtros precisam. */
+
+/* Cada filtro é uma etiqueta com o nome e uma lista de escolha */
+.filtro-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+/* Filtro com uma escolha ativa ganha a borda laranja */
+.filtro-chip.ativo {
+  border-color: var(--destaque);
+}
+
+.filtro-nome {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.filtro-chip select {
+  max-width: 200px;
+  padding: 0.3rem 0.4rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--texto);
+  cursor: pointer;
+  color-scheme: dark;
+}
+
+.filtro-chip select:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+.filtro-chip select:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.filtro-chip select option {
+  background: var(--fundo-cartao);
+  color: var(--texto);
+}
+
+/* Botão "Limpar filtros": sempre visível, apagado quando não há filtro ativo */
+.filtro-limpar {
+  padding: 0.4rem 0.9rem;
+  background: transparent;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.filtro-limpar:not(:disabled):hover {
+  border-color: var(--destaque);
+}
+
+.filtro-limpar:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+.filtro-limpar:disabled {
+  opacity: 0.4;
+  color: var(--texto-suave);
+  cursor: default;
+}
+
+.painel.atualizando {
+  cursor: progress;
+}
+
+/* Aviso quando não há dados para a combinação escolhida */
+.sem-dados {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+.grafico-area .sem-dados {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+}

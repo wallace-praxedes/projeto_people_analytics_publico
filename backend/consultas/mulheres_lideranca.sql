@@ -1,6 +1,6 @@
 SELECT
     ROUND(
-        100.0 * COUNT(*) FILTER (WHERE LEFT(UPPER(sexo), 1) = 'F') / COUNT(*),
+        100.0 * COUNT(*) FILTER (WHERE LEFT(UPPER(sexo), 1) = 'F') / NULLIF(COUNT(*), 0),
         1
     ) AS valor,
     '%' AS unidade
