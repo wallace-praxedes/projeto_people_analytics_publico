@@ -1,0 +1,46 @@
+{
+  "indicador": "municipio_top10",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "quantidade": 47,
+      "categoria": "São Paulo"
+    },
+    {
+      "quantidade": 19,
+      "categoria": "Rio de Janeiro"
+    },
+    {
+      "quantidade": 14,
+      "categoria": "Porto Alegre"
+    },
+    {
+      "quantidade": 10,
+      "categoria": "Curitiba"
+    },
+    {
+      "quantidade": 10,
+      "categoria": "Fortaleza"
+    },
+    {
+      "quantidade": 9,
+      "categoria": "Brasília"
+    },
+    {
+      "quantidade": 9,
+      "categoria": "Campinas"
+    },
+    {
+      "quantidade": 9,
+      "categoria": "Recife"
+    },
+    {
+      "quantidade": 8,
+      "categoria": "Salvador"
+    },
+    {
+      "quantidade": 7,
+      "categoria": "Belo Horizonte"
+    }
+  ]
+}

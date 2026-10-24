@@ -1,0 +1,54 @@
+{
+  "indicador": "ativo_por_area",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "quantidade": 41,
+      "categoria": "Engenharia de Software"
+    },
+    {
+      "quantidade": 30,
+      "categoria": "Atendimento ao Cliente"
+    },
+    {
+      "quantidade": 22,
+      "categoria": "Comercial e Customer Success"
+    },
+    {
+      "quantidade": 21,
+      "categoria": "Operações"
+    },
+    {
+      "quantidade": 20,
+      "categoria": "Infraestrutura e Segurança da Informação"
+    },
+    {
+      "quantidade": 19,
+      "categoria": "Produto e Design"
+    },
+    {
+      "quantidade": 17,
+      "categoria": "Financeiro e Controladoria"
+    },
+    {
+      "quantidade": 17,
+      "categoria": "Dados e Analytics"
+    },
+    {
+      "quantidade": 15,
+      "categoria": "Marketing"
+    },
+    {
+      "quantidade": 14,
+      "categoria": "Recursos Humanos (People)"
+    },
+    {
+      "quantidade": 5,
+      "categoria": "Jurídico"
+    },
+    {
+      "quantidade": 4,
+      "categoria": "Presidência"
+    }
+  ]
+}

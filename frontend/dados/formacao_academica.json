@@ -1,0 +1,34 @@
+{
+  "indicador": "formacao_academica",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "quantidade": 109,
+      "categoria": "Superior Completo"
+    },
+    {
+      "quantidade": 44,
+      "categoria": "Pós-Graduação"
+    },
+    {
+      "quantidade": 39,
+      "categoria": "Superior Incompleto"
+    },
+    {
+      "quantidade": 17,
+      "categoria": "Ensino Médio Completo"
+    },
+    {
+      "quantidade": 12,
+      "categoria": "Mestrado"
+    },
+    {
+      "quantidade": 3,
+      "categoria": "Ensino Médio Incompleto"
+    },
+    {
+      "quantidade": 1,
+      "categoria": "Doutorado"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "indicador": "pcd_por_area",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "quantidade": 2,
+      "categoria": "Atendimento ao Cliente"
+    },
+    {
+      "quantidade": 1,
+      "categoria": "Comercial e Customer Success"
+    },
+    {
+      "quantidade": 1,
+      "categoria": "Engenharia de Software"
+    },
+    {
+      "quantidade": 1,
+      "categoria": "Financeiro e Controladoria"
+    },
+    {
+      "quantidade": 1,
+      "categoria": "Jurídico"
+    },
+    {
+      "quantidade": 1,
+      "categoria": "Operações"
+    },
+    {
+      "quantidade": 1,
+      "categoria": "Presidência"
+    }
+  ]
+}

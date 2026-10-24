@@ -1,0 +1,66 @@
+{
+  "indicador": "lideranca_por_area",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "categoria": "Engenharia de Software",
+      "lideres": 6,
+      "total": 41
+    },
+    {
+      "categoria": "Atendimento ao Cliente",
+      "lideres": 6,
+      "total": 30
+    },
+    {
+      "categoria": "Comercial e Customer Success",
+      "lideres": 3,
+      "total": 22
+    },
+    {
+      "categoria": "Operações",
+      "lideres": 6,
+      "total": 21
+    },
+    {
+      "categoria": "Infraestrutura e Segurança da Informação",
+      "lideres": 3,
+      "total": 20
+    },
+    {
+      "categoria": "Produto e Design",
+      "lideres": 2,
+      "total": 19
+    },
+    {
+      "categoria": "Financeiro e Controladoria",
+      "lideres": 5,
+      "total": 17
+    },
+    {
+      "categoria": "Dados e Analytics",
+      "lideres": 2,
+      "total": 17
+    },
+    {
+      "categoria": "Marketing",
+      "lideres": 3,
+      "total": 15
+    },
+    {
+      "categoria": "Recursos Humanos (People)",
+      "lideres": 3,
+      "total": 14
+    },
+    {
+      "categoria": "Jurídico",
+      "lideres": 1,
+      "total": 5
+    },
+    {
+      "categoria": "Presidência",
+      "lideres": 1,
+      "total": 4
+    }
+  ]
+}

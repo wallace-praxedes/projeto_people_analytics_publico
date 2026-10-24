@@ -1,0 +1,36 @@
+{
+  "indicador": "piramide_etaria",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "faixa_etaria": "Geração X (1961 a 1980)",
+      "sexo": "Masculino",
+      "quantidade": 10
+    },
+    {
+      "faixa_etaria": "Geração X (1961 a 1980)",
+      "sexo": "Feminino",
+      "quantidade": 7
+    },
+    {
+      "faixa_etaria": "Geração Y (1981 a 1996)",
+      "sexo": "Feminino",
+      "quantidade": 62
+    },
+    {
+      "faixa_etaria": "Geração Y (1981 a 1996)",
+      "sexo": "Masculino",
+      "quantidade": 67
+    },
+    {
+      "faixa_etaria": "Geração Z (1997 a 2009)",
+      "sexo": "Masculino",
+      "quantidade": 46
+    },
+    {
+      "faixa_etaria": "Geração Z (1997 a 2009)",
+      "sexo": "Feminino",
+      "quantidade": 33
+    }
+  ]
+}

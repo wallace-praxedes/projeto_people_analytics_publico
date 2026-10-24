@@ -1,0 +1,14 @@
+{
+  "indicador": "distribuicao_sexo",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "categoria": "Masculino",
+      "quantidade": 123
+    },
+    {
+      "categoria": "Feminino",
+      "quantidade": 102
+    }
+  ]
+}

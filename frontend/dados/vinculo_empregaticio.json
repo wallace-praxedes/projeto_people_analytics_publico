@@ -1,0 +1,26 @@
+{
+  "indicador": "vinculo_empregaticio",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "quantidade": 198,
+      "categoria": "CLT - Prazo Indeterminado"
+    },
+    {
+      "quantidade": 17,
+      "categoria": "Estagiário"
+    },
+    {
+      "quantidade": 5,
+      "categoria": "Diretor Estatutário"
+    },
+    {
+      "quantidade": 4,
+      "categoria": "Aprendiz"
+    },
+    {
+      "quantidade": 1,
+      "categoria": "CLT - Prazo Determinado"
+    }
+  ]
+}

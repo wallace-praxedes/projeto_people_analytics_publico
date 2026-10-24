@@ -1,0 +1,26 @@
+{
+  "indicador": "estado_civil",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "categoria": "Solteiro (a)",
+      "quantidade": 97
+    },
+    {
+      "categoria": "Casado (a)",
+      "quantidade": 82
+    },
+    {
+      "categoria": "União Estável",
+      "quantidade": 25
+    },
+    {
+      "categoria": "Divorciado (a)",
+      "quantidade": 17
+    },
+    {
+      "categoria": "Viúvo (a)",
+      "quantidade": 4
+    }
+  ]
+}

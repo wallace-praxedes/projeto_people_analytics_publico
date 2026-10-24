@@ -1,0 +1,26 @@
+{
+  "indicador": "ativo_por_diretoria",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "categoria": "COO",
+      "quantidade": 88
+    },
+    {
+      "categoria": "CTO",
+      "quantidade": 78
+    },
+    {
+      "categoria": "CEO",
+      "quantidade": 23
+    },
+    {
+      "categoria": "CPO",
+      "quantidade": 19
+    },
+    {
+      "categoria": "CFO",
+      "quantidade": 17
+    }
+  ]
+}
