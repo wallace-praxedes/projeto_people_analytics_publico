@@ -25,12 +25,28 @@
     <section id="perfil" class="secao">
       <h2><span class="secao-numero">02</span>Perfil do quadro</h2>
       <div class="grade">
-        <div id="grafico-sexo" class="cartao">[reservado: distribuicao_sexo]</div>
+
+        <div class="cartao cartao--grafico">
+          <h3 class="cartao-titulo">Distribuição por sexo</h3>
+          <div class="grafico-area"><canvas id="grafico-sexo"></canvas></div>
+        </div>
+
         <div id="grafico-piramide" class="cartao cartao--largo">[reservado: piramide_etaria]</div>
-        <div id="grafico-estado-civil" class="cartao">[reservado: estado_civil]</div>
+
+        <div class="cartao cartao--grafico">
+          <h3 class="cartao-titulo">Estado civil</h3>
+          <div class="grafico-area"><canvas id="grafico-estado-civil"></canvas></div>
+        </div>
+
         <div id="grafico-formacao" class="cartao">[reservado: formacao_academica]</div>
-        <div id="grafico-vinculo" class="cartao">[reservado: vinculo_empregaticio]</div>
+
+        <div class="cartao cartao--grafico">
+          <h3 class="cartao-titulo">Vínculo empregatício</h3>
+          <div class="grafico-area"><canvas id="grafico-vinculo"></canvas></div>
+        </div>
+
         <div id="numero-pcd" class="cartao">[reservado: pcd_total]</div>
+
       </div>
     </section>
 
@@ -69,6 +85,7 @@
     <p>Projeto de portfólio com dados fictícios.</p>
   </footer>
 
+  <script src="js/vendor/chart.umd.js"></script>
   <script src="js/principal.js"></script>
 </body>
-</html>
+</html> 

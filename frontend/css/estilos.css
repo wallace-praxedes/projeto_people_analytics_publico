@@ -198,6 +198,29 @@ textarea {
   grid-column: span 2;
 }
 
+/* Cartão que contém um gráfico: título em cima, desenho embaixo */
+.cartao--grafico {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  text-align: left;
+  color: var(--texto);
+}
+
+.cartao-titulo {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+/* A Chart.js precisa de uma caixa com altura definida para desenhar dentro */
+.grafico-area {
+  position: relative;
+  width: 100%;
+  height: 280px;
+}
+
 /* ===== FILTROS FIXOS (grudam no topo da tela ao rolar) ===== */
 #filtros {
   position: sticky;
