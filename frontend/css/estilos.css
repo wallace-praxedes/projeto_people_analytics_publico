@@ -1,0 +1,231 @@
+/* ===== FONTE QUICKSAND (guardada no próprio projeto, em frontend/fonts) ===== */
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/Quicksand-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/Quicksand-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/Quicksand-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/Quicksand-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("../fonts/Quicksand-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== CORES E MEDIDAS (a "paleta de tintas" do projeto) ===== */
+:root {
+  --fonte: "Quicksand", Arial, sans-serif;
+  --fundo: #0d0d10;
+  --fundo-cartao: #17171c;
+  --borda: #2a2a32;
+  --texto: #f2f2f5;
+  --texto-suave: #9a9aa6;
+  --destaque: #ff7a1a;
+  --destaque-brilho: rgba(255, 122, 26, 0.18);
+  --raio: 16px;
+  --espaco: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ===== BASE ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Botões e campos não herdam a fonte sozinhos; isto garante Quicksand neles
+   (vai valer para os filtros da Etapa 8) */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* ===== TOPO ===== */
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding: 1.25rem var(--espaco);
+  border-bottom: 1px solid var(--borda);
+}
+
+.topo-titulo {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.topo-titulo::before {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+  background: var(--destaque);
+}
+
+.topo-nota {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+/* ===== ABERTURA (número gigante) ===== */
+.abertura {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem var(--espaco);
+  background: radial-gradient(ellipse at center, var(--destaque-brilho) 0%, transparent 65%);
+}
+
+.abertura-rotulo {
+  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+#numero-ativos {
+  font-size: clamp(6rem, 26vw, 18rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--destaque);
+}
+
+/* ===== SEÇÕES ===== */
+.secao {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6rem) var(--espaco);
+}
+
+.secao h2 {
+  margin-bottom: 2rem;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.secao-numero {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--destaque);
+}
+
+/* ===== GRADE E CARTÕES (as "gavetas" dos gráficos) ===== */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.cartao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  padding: 1.5rem;
+  background: var(--fundo-cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  transition: border-color 0.2s ease;
+}
+
+.cartao:hover {
+  border-color: var(--destaque);
+}
+
+.cartao--largo {
+  grid-column: span 2;
+}
+
+/* ===== FILTROS FIXOS (grudam no topo da tela ao rolar) ===== */
+#filtros {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: rgba(13, 13, 16, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+  padding: 2rem var(--espaco);
+  border-top: 1px solid var(--borda);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+/* ===== CELULAR ===== */
+@media (max-width: 700px) {
+  .cartao--largo {
+    grid-column: span 1;
+  }
+}

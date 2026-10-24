@@ -4,60 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de People Analytics</title>
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-  <header>
-    <h1>Painel de People Analytics</h1>
-    <p>Dados fictícios – Nexa Tecnologia S.A. e Nexa Serviços Digitais Ltda.</p>
+  <header class="topo">
+    <h1 class="topo-titulo">Painel de People Analytics</h1>
+    <p class="topo-nota">Dados fictícios · Nexa Tecnologia S.A. e Nexa Serviços Digitais Ltda.</p>
   </header>
 
   <main>
 
     <!-- PARTE DE CIMA: NARRATIVA (sem filtros) -->
 
-    <section id="abertura">
-      <h2>1. Abertura</h2>
-      <p>Empregados ativos</p>
+    <section id="abertura" class="abertura">
+      <p class="abertura-rotulo">Empregados ativos</p>
       <div id="numero-ativos">carregando...</div>
     </section>
 
-    <section id="perfil">
-      <h2>2. Perfil do quadro</h2>
-      <div id="grafico-sexo">[reservado: distribuicao_sexo]</div>
-      <div id="grafico-piramide">[reservado: piramide_etaria]</div>
-      <div id="grafico-estado-civil">[reservado: estado_civil]</div>
-      <div id="grafico-formacao">[reservado: formacao_academica]</div>
-      <div id="grafico-vinculo">[reservado: vinculo_empregaticio]</div>
-      <div id="numero-pcd">[reservado: pcd_total]</div>
+    <section id="perfil" class="secao">
+      <h2><span class="secao-numero">02</span>Perfil do quadro</h2>
+      <div class="grade">
+        <div id="grafico-sexo" class="cartao">[reservado: distribuicao_sexo]</div>
+        <div id="grafico-piramide" class="cartao cartao--largo">[reservado: piramide_etaria]</div>
+        <div id="grafico-estado-civil" class="cartao">[reservado: estado_civil]</div>
+        <div id="grafico-formacao" class="cartao">[reservado: formacao_academica]</div>
+        <div id="grafico-vinculo" class="cartao">[reservado: vinculo_empregaticio]</div>
+        <div id="numero-pcd" class="cartao">[reservado: pcd_total]</div>
+      </div>
     </section>
 
-    <section id="evolucao">
-      <h2>3. Evolução e tempo</h2>
-      <div id="grafico-evolucao">[reservado: evolucao_mensal]</div>
-      <div id="numero-tempo-casa">[reservado: tempo_medio_casa]</div>
+    <section id="evolucao" class="secao">
+      <h2><span class="secao-numero">03</span>Evolução e tempo</h2>
+      <div class="grade">
+        <div id="grafico-evolucao" class="cartao cartao--largo">[reservado: evolucao_mensal]</div>
+        <div id="numero-tempo-casa" class="cartao">[reservado: tempo_medio_casa]</div>
+      </div>
     </section>
 
-    <section id="estrutura">
-      <h2>4. Estrutura organizacional</h2>
-      <div id="grafico-empresa">[reservado: ativo_por_empresa]</div>
-      <div id="grafico-diretoria">[reservado: ativo_por_diretoria]</div>
-      <div id="grafico-area">[reservado: ativo_por_area]</div>
-      <div id="grafico-lideranca">[reservado: lideranca_por_area]</div>
-      <div id="grafico-pcd-area">[reservado: pcd_por_area]</div>
+    <section id="estrutura" class="secao">
+      <h2><span class="secao-numero">04</span>Estrutura organizacional</h2>
+      <div class="grade">
+        <div id="grafico-empresa" class="cartao">[reservado: ativo_por_empresa]</div>
+        <div id="grafico-diretoria" class="cartao">[reservado: ativo_por_diretoria]</div>
+        <div id="grafico-area" class="cartao cartao--largo">[reservado: ativo_por_area]</div>
+        <div id="grafico-lideranca" class="cartao">[reservado: lideranca_por_area]</div>
+        <div id="grafico-pcd-area" class="cartao">[reservado: pcd_por_area]</div>
+      </div>
     </section>
 
     <!-- PARTE DE BAIXO: EXPLORAÇÃO (filtros fixos) -->
 
-    <section id="exploracao">
-      <h2>5. Exploração</h2>
+    <section id="exploracao" class="secao">
+      <h2><span class="secao-numero">05</span>Exploração</h2>
       <div id="filtros">[reservado: filtros de município e área]</div>
-      <div id="grafico-municipio">[reservado: município]</div>
+      <div class="grade">
+        <div id="grafico-municipio" class="cartao cartao--largo">[reservado: municipio_nascimento]</div>
+      </div>
     </section>
 
   </main>
 
-  <footer>
+  <footer class="rodape">
     <p>Projeto de portfólio com dados fictícios.</p>
   </footer>
 
