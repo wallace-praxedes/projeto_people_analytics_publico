@@ -1,0 +1,204 @@
+{
+  "indicador": "municipio_mapa",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "municipio": "São Paulo",
+      "latitude": -23.5329,
+      "longitude": -46.6395,
+      "quantidade": 47
+    },
+    {
+      "municipio": "Rio de Janeiro",
+      "latitude": -22.9129,
+      "longitude": -43.2003,
+      "quantidade": 19
+    },
+    {
+      "municipio": "Porto Alegre",
+      "latitude": -30.0318,
+      "longitude": -51.2065,
+      "quantidade": 14
+    },
+    {
+      "municipio": "Curitiba",
+      "latitude": -25.4195,
+      "longitude": -49.2646,
+      "quantidade": 10
+    },
+    {
+      "municipio": "Fortaleza",
+      "latitude": -3.71664,
+      "longitude": -38.5423,
+      "quantidade": 10
+    },
+    {
+      "municipio": "Brasília",
+      "latitude": -15.7795,
+      "longitude": -47.9297,
+      "quantidade": 9
+    },
+    {
+      "municipio": "Campinas",
+      "latitude": -22.9053,
+      "longitude": -47.0659,
+      "quantidade": 9
+    },
+    {
+      "municipio": "Recife",
+      "latitude": -8.04666,
+      "longitude": -34.8771,
+      "quantidade": 9
+    },
+    {
+      "municipio": "Salvador",
+      "latitude": -12.9718,
+      "longitude": -38.5011,
+      "quantidade": 8
+    },
+    {
+      "municipio": "Belo Horizonte",
+      "latitude": -19.9102,
+      "longitude": -43.9266,
+      "quantidade": 7
+    },
+    {
+      "municipio": "Florianópolis",
+      "latitude": -27.5945,
+      "longitude": -48.5477,
+      "quantidade": 7
+    },
+    {
+      "municipio": "Osasco",
+      "latitude": -23.5324,
+      "longitude": -46.7916,
+      "quantidade": 7
+    },
+    {
+      "municipio": "São Bernardo do Campo",
+      "latitude": -23.6914,
+      "longitude": -46.5646,
+      "quantidade": 7
+    },
+    {
+      "municipio": "Guarulhos",
+      "latitude": -23.4538,
+      "longitude": -46.5333,
+      "quantidade": 6
+    },
+    {
+      "municipio": "Cuiabá",
+      "latitude": -15.601,
+      "longitude": -56.0974,
+      "quantidade": 5
+    },
+    {
+      "municipio": "Ribeirão Preto",
+      "latitude": -21.1699,
+      "longitude": -47.8099,
+      "quantidade": 5
+    },
+    {
+      "municipio": "Sorocaba",
+      "latitude": -23.4969,
+      "longitude": -47.4451,
+      "quantidade": 5
+    },
+    {
+      "municipio": "Uberlândia",
+      "latitude": -18.9141,
+      "longitude": -48.2749,
+      "quantidade": 5
+    },
+    {
+      "municipio": "Belém",
+      "latitude": -1.4554,
+      "longitude": -48.4898,
+      "quantidade": 4
+    },
+    {
+      "municipio": "Campo Grande",
+      "latitude": -20.4486,
+      "longitude": -54.6295,
+      "quantidade": 4
+    },
+    {
+      "municipio": "Santos",
+      "latitude": -23.9535,
+      "longitude": -46.335,
+      "quantidade": 4
+    },
+    {
+      "municipio": "Goiânia",
+      "latitude": -16.6864,
+      "longitude": -49.2643,
+      "quantidade": 3
+    },
+    {
+      "municipio": "Juiz de Fora",
+      "latitude": -21.7595,
+      "longitude": -43.3398,
+      "quantidade": 3
+    },
+    {
+      "municipio": "Niterói",
+      "latitude": -22.8832,
+      "longitude": -43.1034,
+      "quantidade": 3
+    },
+    {
+      "municipio": "Santo André",
+      "latitude": -23.6737,
+      "longitude": -46.5432,
+      "quantidade": 3
+    },
+    {
+      "municipio": "Aracaju",
+      "latitude": -10.9091,
+      "longitude": -37.0677,
+      "quantidade": 2
+    },
+    {
+      "municipio": "João Pessoa",
+      "latitude": -7.11509,
+      "longitude": -34.8641,
+      "quantidade": 2
+    },
+    {
+      "municipio": "Natal",
+      "latitude": -5.79357,
+      "longitude": -35.1986,
+      "quantidade": 2
+    },
+    {
+      "municipio": "São Luís",
+      "latitude": -2.53874,
+      "longitude": -44.2825,
+      "quantidade": 2
+    },
+    {
+      "municipio": "Feira de Santana",
+      "latitude": -12.2664,
+      "longitude": -38.9663,
+      "quantidade": 1
+    },
+    {
+      "municipio": "Londrina",
+      "latitude": -23.304,
+      "longitude": -51.1691,
+      "quantidade": 1
+    },
+    {
+      "municipio": "Maceió",
+      "latitude": -9.66599,
+      "longitude": -35.735,
+      "quantidade": 1
+    },
+    {
+      "municipio": "Manaus",
+      "latitude": -3.11866,
+      "longitude": -60.0212,
+      "quantidade": 1
+    }
+  ]
+}

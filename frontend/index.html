@@ -15,77 +15,176 @@
 
   <main>
 
-    <!-- PARTE DE CIMA: NARRATIVA (sem filtros) -->
-
+    <!-- ABERTURA -->
     <section id="abertura" class="abertura">
       <p class="abertura-rotulo">Empregados ativos</p>
       <div id="numero-ativos">carregando...</div>
     </section>
 
-    <section id="perfil" class="secao">
-      <h2><span class="secao-numero">02</span>Perfil do quadro</h2>
-      <div class="grade">
+    <!-- PAINEL (filtros fixos + telas do mockup) -->
+    <div class="painel">
 
-        <div class="cartao cartao--grafico">
-          <h3 class="cartao-titulo">Distribuição por sexo</h3>
-          <div class="grafico-area"><canvas id="grafico-sexo"></canvas></div>
+      <div class="filtros-faixa">
+        <div id="filtros">
+          <span class="filtros-rotulo">Filtros</span>
+          <span class="filtro-chip">Empresa</span>
+          <span class="filtro-chip">Centro de resultado</span>
+          <span class="filtro-chip">Gerência</span>
+          <span class="filtros-aviso">em breve</span>
         </div>
+      </div>
 
-        <div id="grafico-piramide" class="cartao cartao--largo">[reservado: piramide_etaria]</div>
+      <!-- TELA 1: VISÃO GERAL E DIVERSIDADE -->
+      <section id="visao-geral" class="secao">
+        <h2><span class="secao-numero">02</span>Visão geral e diversidade</h2>
+        <div class="grade">
 
-        <div class="cartao cartao--grafico">
-          <h3 class="cartao-titulo">Estado civil</h3>
-          <div class="grafico-area"><canvas id="grafico-estado-civil"></canvas></div>
+          <div class="cartao cartao--grafico col-3">
+            <h3 class="cartao-titulo titulo-2linhas">Distribuição por sexo</h3>
+            <div class="grafico-area grafico-area--alto"><canvas id="grafico-sexo"></canvas></div>
+          </div>
+
+          <div class="cartao cartao--grafico col-3">
+            <h3 class="cartao-titulo titulo-2linhas">Distribuição por raça/cor</h3>
+            <div class="grafico-area grafico-area--alto"><canvas id="grafico-raca"></canvas></div>
+          </div>
+
+          <div class="cartao cartao--grafico col-6 cheia-tablet">
+            <div class="cartao-cabecalho">
+              <h3 class="cartao-titulo">Sexo por nível hierárquico</h3>
+              <div class="selo">
+                <span id="numero-mulheres-lideranca" class="selo-valor">...</span>
+                <span class="selo-rotulo">mulheres na liderança</span>
+              </div>
+            </div>
+            <div class="grafico-area grafico-area--alto"><canvas id="grafico-sexo-nivel"></canvas></div>
+          </div>
+
+          <div class="cartao cartao--grafico col-12">
+            <h3 class="cartao-titulo">Evolução de empregados ativos</h3>
+            <div class="grafico-area"><canvas id="grafico-evolucao"></canvas></div>
+          </div>
+
         </div>
+      </section>
 
-        <div id="grafico-formacao" class="cartao">[reservado: formacao_academica]</div>
+      <!-- TELA 2: PERFIL DEMOGRÁFICO E LOCALIZAÇÃO -->
+      <section id="perfil" class="secao">
+        <h2><span class="secao-numero">03</span>Perfil demográfico e localização</h2>
+        <div class="grade">
 
-        <div class="cartao cartao--grafico">
-          <h3 class="cartao-titulo">Vínculo empregatício</h3>
-          <div class="grafico-area"><canvas id="grafico-vinculo"></canvas></div>
+          <!-- Coluna da esquerda: três quadrados em cima e a pirâmide embaixo -->
+          <div class="coluna-esquerda col-7">
+
+            <div class="trio">
+              <div class="cartao cartao--numero">
+                <p class="numero-rotulo">% PCD</p>
+                <div id="numero-pcd" class="numero-valor">...</div>
+                <p id="detalhe-pcd" class="numero-detalhe"></p>
+              </div>
+              <div class="cartao cartao--numero">
+                <p class="numero-rotulo">Média de idade</p>
+                <div id="numero-idade" class="numero-valor">...</div>
+                <p class="numero-detalhe">dos ativos</p>
+              </div>
+              <div class="cartao cartao--numero">
+                <p class="numero-rotulo">Tempo médio de casa</p>
+                <div id="numero-tempo-casa" class="numero-valor">...</div>
+                <p class="numero-detalhe">dos ativos</p>
+              </div>
+            </div>
+
+            <div class="cartao cartao--grafico cartao--cresce">
+              <h3 class="cartao-titulo">Idade e sexo (pirâmide por geração)</h3>
+              <div class="grafico-area grafico-area--piramide"><canvas id="grafico-piramide"></canvas></div>
+            </div>
+
+          </div>
+
+          <div class="cartao cartao--grafico col-5 cheia-tablet">
+            <h3 class="cartao-titulo">Onde nasceram os empregados ativos</h3>
+            <p class="cartao-subtitulo">Município de nascimento · área do círculo proporcional à quantidade</p>
+            <div id="mapa-brasil" class="mapa-caixa"></div>
+            <ol id="ranking-municipios" class="ranking"></ol>
+          </div>
+
+          <div class="cartao cartao--grafico col-12">
+            <h3 class="cartao-titulo">Formação acadêmica por nível hierárquico</h3>
+            <div id="matriz-formacao" class="matriz-rolagem"></div>
+            <div class="matriz-legenda">
+              <span>menos</span>
+              <span class="matriz-barra"></span>
+              <span>mais</span>
+              <span class="matriz-legenda-nota">cor = % dentro de cada nível · número = quantidade</span>
+            </div>
+          </div>
+
         </div>
+      </section>
 
-        <div id="numero-pcd" class="cartao">[reservado: pcd_total]</div>
+      <!-- ESTRUTURA ORGANIZACIONAL -->
+      <section id="estrutura" class="secao">
+        <h2><span class="secao-numero">04</span>Estrutura organizacional</h2>
+        <div class="grade">
 
-      </div>
-    </section>
+          <div class="cartao cartao--grafico col-4 cheia-tablet">
+            <h3 class="cartao-titulo">Ativos por empresa</h3>
+            <div class="grafico-area"><canvas id="grafico-empresa"></canvas></div>
+          </div>
 
-    <section id="evolucao" class="secao">
-      <h2><span class="secao-numero">03</span>Evolução e tempo</h2>
-      <div class="grade">
-        <div id="grafico-evolucao" class="cartao cartao--largo">[reservado: evolucao_mensal]</div>
-        <div id="numero-tempo-casa" class="cartao">[reservado: tempo_medio_casa]</div>
-      </div>
-    </section>
+          <div class="cartao cartao--grafico col-8">
+            <h3 class="cartao-titulo">Ativos por diretoria</h3>
+            <div class="grafico-area"><canvas id="grafico-diretoria"></canvas></div>
+          </div>
 
-    <section id="estrutura" class="secao">
-      <h2><span class="secao-numero">04</span>Estrutura organizacional</h2>
-      <div class="grade">
-        <div id="grafico-empresa" class="cartao">[reservado: ativo_por_empresa]</div>
-        <div id="grafico-diretoria" class="cartao">[reservado: ativo_por_diretoria]</div>
-        <div id="grafico-area" class="cartao cartao--largo">[reservado: ativo_por_area]</div>
-        <div id="grafico-lideranca" class="cartao">[reservado: lideranca_por_area]</div>
-        <div id="grafico-pcd-area" class="cartao">[reservado: pcd_por_area]</div>
-      </div>
-    </section>
+          <div class="cartao cartao--grafico col-7">
+            <h3 class="cartao-titulo">Ativos e liderança por área</h3>
+            <p class="cartao-subtitulo">Total de ativos no fim da barra · laranja = líderes</p>
+            <div class="grafico-area grafico-area--altissimo"><canvas id="grafico-lideranca"></canvas></div>
+          </div>
 
-    <!-- PARTE DE BAIXO: EXPLORAÇÃO (filtros fixos) -->
+          <div class="cartao cartao--grafico col-5">
+            <h3 class="cartao-titulo">PCD por área</h3>
+            <p class="cartao-subtitulo">Pessoas com deficiência em cada área</p>
+            <div class="grafico-area grafico-area--altissimo"><canvas id="grafico-pcd-area"></canvas></div>
+          </div>
 
-    <section id="exploracao" class="secao">
-      <h2><span class="secao-numero">05</span>Exploração</h2>
-      <div id="filtros">[reservado: filtros de município e área]</div>
-      <div class="grade">
-        <div id="grafico-municipio" class="cartao cartao--largo">[reservado: municipio_nascimento]</div>
-      </div>
-    </section>
+        </div>
+      </section>
+
+      <!-- OUTROS RECORTES -->
+      <section id="recortes" class="secao">
+        <h2><span class="secao-numero">05</span>Outros recortes do quadro</h2>
+        <div class="grade">
+
+          <div class="cartao cartao--grafico col-4">
+            <h3 class="cartao-titulo">Estado civil</h3>
+            <div class="grafico-area grafico-area--alto"><canvas id="grafico-estado-civil"></canvas></div>
+          </div>
+
+          <div class="cartao cartao--grafico col-4">
+            <h3 class="cartao-titulo">Formação acadêmica</h3>
+            <div class="grafico-area grafico-area--alto"><canvas id="grafico-formacao"></canvas></div>
+          </div>
+
+          <div class="cartao cartao--grafico col-4 cheia-tablet">
+            <h3 class="cartao-titulo">Vínculo empregatício</h3>
+            <div class="grafico-area grafico-area--alto"><canvas id="grafico-vinculo"></canvas></div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
 
   </main>
 
   <footer class="rodape">
     <p>Projeto de portfólio com dados fictícios.</p>
+    <p class="rodape-creditos">Contorno do mapa: click_that_hood (Code for America) · Coordenadas dos municípios: kelvins/Municipios-Brasileiros (licença MIT)</p>
   </footer>
 
   <script src="js/vendor/chart.umd.js"></script>
   <script src="js/principal.js"></script>
 </body>
-</html> 
+</html>

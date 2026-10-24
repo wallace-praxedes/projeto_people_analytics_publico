@@ -145,6 +145,50 @@ textarea {
   color: var(--destaque);
 }
 
+/* ===== FILTROS FIXOS (faixa que gruda no topo enquanto o painel rola) ===== */
+.filtros-faixa {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 0.75rem var(--espaco);
+  background: rgba(13, 13, 16, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--borda);
+}
+
+#filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.filtros-rotulo {
+  margin-right: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.filtro-chip {
+  padding: 0.4rem 1rem;
+  background: var(--fundo-cartao);
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.filtros-aviso {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
 /* ===== SEÇÕES ===== */
 .secao {
   max-width: 1100px;
@@ -168,18 +212,22 @@ textarea {
   color: var(--destaque);
 }
 
-/* ===== GRADE E CARTÕES (as "gavetas" dos gráficos) ===== */
+/* ===== GRADE E CARTÕES =====
+   A grade tem 12 colunas. As classes col-N dizem quantas colunas o cartão ocupa
+   (col-3 = um quarto, col-4 = um terço, col-6 = metade, col-12 = largura toda). */
 .grade {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(12, 1fr);
   gap: 1.25rem;
 }
 
 .cartao {
+  grid-column: span 4;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 220px;
+  min-width: 0;
+  min-height: 200px;
   padding: 1.5rem;
   background: var(--fundo-cartao);
   border: 1px solid var(--borda);
@@ -194,9 +242,13 @@ textarea {
   border-color: var(--destaque);
 }
 
-.cartao--largo {
-  grid-column: span 2;
-}
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-5 { grid-column: span 5; }
+.col-6 { grid-column: span 6; }
+.col-7 { grid-column: span 7; }
+.col-8 { grid-column: span 8; }
+.col-12 { grid-column: 1 / -1; }
 
 /* Cartão que contém um gráfico: título em cima, desenho embaixo */
 .cartao--grafico {
@@ -207,11 +259,67 @@ textarea {
   color: var(--texto);
 }
 
+/* Cartão que cresce para ocupar o espaço que sobra na coluna */
+.cartao--cresce {
+  flex: 1;
+}
+
 .cartao-titulo {
   margin-bottom: 1rem;
   font-size: 1.05rem;
   font-weight: 700;
+  line-height: 1.3;
   color: var(--texto);
+}
+
+/* Reserva espaço para duas linhas de título, para os gráficos lado a lado
+   começarem na mesma altura mesmo quando um título é mais curto */
+.titulo-2linhas {
+  min-height: 2.6em;
+}
+
+.cartao-subtitulo {
+  margin-top: -0.6rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+/* Título à esquerda e um "selo" à direita */
+.cartao-cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cartao-cabecalho .cartao-titulo {
+  margin-bottom: 0;
+}
+
+.selo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0.4rem 0.9rem;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+}
+
+.selo-valor {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--destaque);
+}
+
+.selo-rotulo {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--texto-suave);
 }
 
 /* A Chart.js precisa de uma caixa com altura definida para desenhar dentro */
@@ -221,20 +329,280 @@ textarea {
   height: 280px;
 }
 
-/* ===== FILTROS FIXOS (grudam no topo da tela ao rolar) ===== */
-#filtros {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  margin-bottom: 1.25rem;
-  padding: 1rem 1.25rem;
-  background: rgba(13, 13, 16, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--borda);
-  border-radius: var(--raio);
-  text-align: center;
-  font-size: 0.95rem;
+.grafico-area--alto {
+  height: 340px;
+}
+
+.grafico-area--altissimo {
+  height: 470px;
+}
+
+.grafico-area--piramide {
+  height: 400px;
+}
+
+/* ===== COLUNA DA ESQUERDA DA TELA 2: três quadrados + pirâmide ===== */
+.coluna-esquerda {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* grid-column: auto desfaz a regra geral dos cartões dentro desta grade menor */
+.trio .cartao {
+  grid-column: auto;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  padding: 0.9rem;
+}
+
+/* ===== CARTÕES DE NÚMERO (% PCD, média de idade, tempo de casa) ===== */
+.cartao--numero {
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.numero-rotulo {
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--texto-suave);
+}
+
+.numero-valor {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--destaque);
+}
+
+/* A unidade ("anos") fica numa linha própria, logo abaixo do número */
+.numero-unidade {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+  color: var(--texto-suave);
+}
+
+.numero-detalhe {
+  font-size: 0.8rem;
+  line-height: 1.3;
+  color: var(--texto-suave);
+}
+
+/* ===== MAPA DO BRASIL (círculos de densidade) ===== */
+.mapa-caixa {
+  position: relative;
+  width: 100%;
+}
+
+.mapa-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mapa-estado {
+  fill: #1f1f26;
+  stroke: #3a3a46;
+  stroke-width: 0.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.mapa-bolha {
+  stroke: var(--destaque);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+
+.mapa-bolha:hover {
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.mapa-dica {
+  position: absolute;
+  z-index: 5;
+  padding: 0.4rem 0.7rem;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--texto);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease;
+}
+
+.mapa-dica.visivel {
+  opacity: 1;
+}
+
+.mapa-legenda-circulo {
+  fill: none;
+  stroke: #9a9aa6;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.mapa-legenda-linha {
+  stroke: #5a5a68;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.mapa-legenda-texto {
+  fill: #9a9aa6;
+  font-family: var(--fonte);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.mapa-legenda-titulo {
+  fill: #9a9aa6;
+  font-family: var(--fonte);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Lista dos 5 municípios com mais empregados */
+.ranking {
+  margin-top: 1rem;
+  list-style: none;
+  counter-reset: posicao;
+}
+
+.ranking li {
+  counter-increment: posicao;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--borda);
+  font-size: 0.9rem;
+}
+
+.ranking li:last-child {
+  border-bottom: none;
+}
+
+.ranking li::before {
+  content: counter(posicao);
+  width: 1.2rem;
+  font-weight: 700;
+  color: var(--destaque);
+}
+
+.ranking-nome {
+  flex: 1;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.ranking-valor {
+  font-weight: 700;
+  color: var(--texto-suave);
+}
+
+/* ===== MATRIZ COM MAPA DE CALOR =====
+   Colunas de largura fixa: a primeira (nível) e a última (total) têm tamanho próprio
+   e as colunas de formação dividem o resto igualmente. Assim cabe tudo, sem rolagem. */
+.matriz-rolagem {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.matriz {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 4px;
+  font-size: 0.85rem;
+}
+
+.matriz th {
+  padding: 0.4rem 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  vertical-align: bottom;
+  overflow-wrap: break-word;
+  color: var(--texto-suave);
+}
+
+.matriz th:first-child {
+  width: 130px;
+}
+
+.matriz th:last-child {
+  width: 64px;
+}
+
+.matriz th[scope="row"] {
+  padding-right: 0.6rem;
+  font-size: 0.85rem;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: var(--texto);
+}
+
+.matriz td {
+  padding: 0.75rem 0.3rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--texto);
+}
+
+.matriz td.zero {
+  background: rgba(255, 255, 255, 0.03);
+  color: #5a5a68;
+}
+
+.matriz td.total {
+  background: transparent;
+  color: var(--texto-suave);
+}
+
+.matriz-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+.matriz-barra {
+  width: 90px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(to right, rgba(255, 122, 26, 0.12), rgba(255, 122, 26, 1));
+}
+
+.matriz-legenda-nota {
+  margin-left: auto;
 }
 
 /* ===== RODAPÉ ===== */
@@ -246,9 +614,67 @@ textarea {
   color: var(--texto-suave);
 }
 
-/* ===== CELULAR ===== */
-@media (max-width: 700px) {
-  .cartao--largo {
+.rodape-creditos {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+}
+
+/* ===== TABLET: 2 colunas ===== */
+@media (max-width: 900px) {
+  .grade {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cartao,
+  .col-3,
+  .col-4,
+  .col-6 {
     grid-column: span 1;
+  }
+
+  .col-5,
+  .col-7,
+  .col-8,
+  .col-12,
+  .cheia-tablet {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===== CELULAR: 1 coluna ===== */
+@media (max-width: 600px) {
+  .grade {
+    grid-template-columns: 1fr;
+  }
+
+  .cartao,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-12,
+  .cheia-tablet {
+    grid-column: 1 / -1;
+  }
+
+  /* Os três números ficam um embaixo do outro, em cartões mais baixos */
+  .trio {
+    grid-template-columns: 1fr;
+  }
+
+  .trio .cartao {
+    aspect-ratio: auto;
+    min-height: 130px;
+  }
+
+  /* No celular a matriz não cabe sem rolar: mantém uma largura mínima e deixa rolar */
+  .matriz {
+    min-width: 620px;
+  }
+
+  .matriz-legenda-nota {
+    margin-left: 0;
   }
 }

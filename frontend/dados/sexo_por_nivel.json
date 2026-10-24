@@ -1,0 +1,46 @@
+{
+  "indicador": "sexo_por_nivel",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "nivel_hierarquico": "ESTAGIARIO (A)",
+      "sexo": "Feminino",
+      "quantidade": 6
+    },
+    {
+      "nivel_hierarquico": "ESTAGIARIO (A)",
+      "sexo": "Masculino",
+      "quantidade": 11
+    },
+    {
+      "nivel_hierarquico": "GERENTE",
+      "sexo": "Feminino",
+      "quantidade": 18
+    },
+    {
+      "nivel_hierarquico": "GERENTE",
+      "sexo": "Masculino",
+      "quantidade": 23
+    },
+    {
+      "nivel_hierarquico": "JOVEM APRENDIZ",
+      "sexo": "Feminino",
+      "quantidade": 3
+    },
+    {
+      "nivel_hierarquico": "JOVEM APRENDIZ",
+      "sexo": "Masculino",
+      "quantidade": 1
+    },
+    {
+      "nivel_hierarquico": "NÃO GERENTE",
+      "sexo": "Feminino",
+      "quantidade": 75
+    },
+    {
+      "nivel_hierarquico": "NÃO GERENTE",
+      "sexo": "Masculino",
+      "quantidade": 88
+    }
+  ]
+}

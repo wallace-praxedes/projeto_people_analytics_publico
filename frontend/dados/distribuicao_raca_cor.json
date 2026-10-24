@@ -1,0 +1,22 @@
+{
+  "indicador": "distribuicao_raca_cor",
+  "competencia": "2026-10-24",
+  "dados": [
+    {
+      "categoria": "Parda",
+      "quantidade": 101
+    },
+    {
+      "categoria": "Branca",
+      "quantidade": 94
+    },
+    {
+      "categoria": "Preta",
+      "quantidade": 23
+    },
+    {
+      "categoria": "Amarela",
+      "quantidade": 7
+    }
+  ]
+}
